@@ -1,3 +1,5 @@
+from random import randint
+
 class QuickSort() : 
     
     def __init__(self, Start, End, Array):
@@ -30,9 +32,20 @@ class QuickSort() :
             q = self.Partition( Start, End)
             self.Sort( Start, q-1 )
             self.Sort( q+1, End )
-            
         return self.Array
 
+    def Random_Partition(self, Start, End):
+        random=randint( Start, End -1 )
+        self.Swap( random, End )
+        return self.Partition( Start, End)
+    
+    def Random_Sort(self,  Start, End ):
+        if Start < End :
+            q = self.Random_Partition( Start, End)
+            self.Random_Sort( Start, q-1 )
+            self.Random_Sort( q+1, End )
+        return self.Array
+        
 if __name__ == "__main__":
     print("Enter the length of array to be sorted")
     Count = int( input() )
